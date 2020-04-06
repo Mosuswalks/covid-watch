@@ -4,12 +4,16 @@ body{
   background-color: rgb(250, 250, 250);
 }
 
+img{
+  padding-top: 5%;
+}
+
 .container {
   width: 80%;
   display: flex;
   margin: auto;
   padding: auto;
-  height: 100vh;
+  height: 100%;
 }
 
 [data-theme="dark"] .site-layout-content {
