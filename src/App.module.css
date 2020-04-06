@@ -1,0 +1,17 @@
+
+
+body{
+  background-color: rgb(250, 250, 250);
+}
+
+.container {
+  width: 80%;
+  display: flex;
+  margin: auto;
+  padding: auto;
+  height: 100vh;
+}
+
+[data-theme="dark"] .site-layout-content {
+  background: #141414;
+}

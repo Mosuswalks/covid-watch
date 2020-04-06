@@ -1,25 +1,35 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from 'react';
+import { Layout } from 'antd';
+import 'antd/dist/antd.css';
+import styles from './App.module.css';
+import { Cards, Chart, CountryPicker } from './components';
+
+import { fetchData } from './services/covid-api';
+
+const { Content, Footer } = Layout;
 
 function App() {
+  const [data, setData] = useState({});
+
+  useEffect(() => {
+    async function setApiData() {
+      const response = await fetchData();
+      setData(response);
+    }
+    setApiData();
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Layout className="layout">
+      <div className={styles.container}>
+        <Content>
+          <Cards data={data} />
+          <CountryPicker />
+          <Chart />
+        </Content>
+      </div>
+      <Footer />
+    </Layout>
   );
 }
 
